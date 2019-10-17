@@ -1,0 +1,96 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+  <div class="ui-g-12 ui-md-4 ui-lg-4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <p-panel header="Ingreso">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Mail *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="mail" placeholder="Ingrese mail" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mail'].valid&&userform.controls['mail'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Password *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="password" formControlName="password" placeholder="Ingrese password" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+              <button pButton type="submit" label="Ingresar" [disabled]="!userform.valid"></button>
+              <br>
+              <br>
+              <button pButton type="button" (click)="registrar()" label="Registrar" class="ui-button-success"></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+          </div>
+
+        </div>
+      </p-panel>
+    </form>
+
+
+
+  </div>
+  <div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+</div>
+
+<div class="ui-g-12 ui-md-4 ui-lg-4"></div>
+<div class="ui-g-12 ui-md-4 ui-lg-4">
+  <button pButton type="button" (click)="admin()" label="Administrador" class="ui-button-info"></button>
+  <button pButton type="button" (click)="cliente()" label="Cliente" class="ui-button-warning"></button>
+  <br>
+  <br>
+
+  <div *ngIf="!tablaUsuarios&&visible">
+    {{tituloEspera}}
+    <p-progressBar mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+  </div>
+
+  <div *ngIf="tablaUsuarios">
+    <h3 class="first"> {{titulo}} </h3>
+    <p-table [value]="tablaUsuarios">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Mail</th>
+          <th>Password</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-car>
+        <tr>
+          <td>{{car.mail}}</td>
+          <td>{{car.password}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>
+<div class="ui-g-12 ui-md-4 ui-lg-4"></div>

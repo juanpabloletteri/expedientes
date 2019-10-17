@@ -1,0 +1,134 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-4 ui-lg-3"></div>
+  <div class="ui-g-12 ui-md-10 ui-lg-6">
+
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <p-panel header="Alta de Mascota">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Nombre *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="nombre" placeholder="Ingrese nombre" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['nombre'].valid&&userform.controls['nombre'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Raza *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="raza" placeholder="Ingrese raza" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['raza'].valid&&userform.controls['raza'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Color *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="color" placeholder="Ingrese color" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['color'].valid&&userform.controls['color'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Edad *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="number" formControlName="edad" placeholder="Ingrese edad" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['edad'].valid&&userform.controls['edad'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Tipo *:
+            </div>
+            <div class="ui-grid-col-6">
+              <p-selectButton [options]="types" formControlName="tipo"></p-selectButton>
+            </div>
+
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['tipo'].valid&&userform.controls['tipo'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+              <button pButton type="submit" label="Agregar" [disabled]="!userform.valid"></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+          </div>
+
+        </div>
+      </p-panel>
+    </form>
+
+  </div>
+
+  <div *ngIf="tipo==1">
+    <h3 class="first">Lista de Usuarios</h3>
+    <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="usuarioSeleccionado"
+      (onRowSelect)="onRowSelect($event)">
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto">
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+        </tr>
+
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div *ngIf="usuarioSeleccionado"> {{usuarioSeleccionado.nombre}} </div>
+  </div>
+
+  <div class="ui-g-12 ui-md-4 ui-lg-3"></div>
+</div>
