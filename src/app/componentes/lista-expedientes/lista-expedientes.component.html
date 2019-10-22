@@ -1,0 +1,66 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-4 ui-lg-2"></div>
+
+  <div *ngIf="datosTabla==null">
+    <h3>Cargando {{titulo}}</h3>
+    <p-progressSpinner> </p-progressSpinner>
+  </div>
+
+  <div class="ui-g-12 ui-md-10 ui-lg-8" *ngIf="datosTabla!=null">
+
+    <h3 class="first">Lista de Expedientes</h3>
+    <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="expedienteSeleccionado"
+      (onRowSelect)="onRowSelect($event)">
+      <ng-template pTemplate="caption">
+        <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto">
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+        </tr>
+
+        <tr>
+          <th *ngFor="let col of columns" [ngSwitch]="col.field">
+            <p-dropdown *ngSwitchCase="'tipo'" [options]="tipoExpediente" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+          </th>
+        </tr>
+
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]|tipo}}
+            <!-- poner PIPE-->
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div *ngIf="miUsuario.nombre&&tipo==1">
+      <h3> Nombre y Apellido Dueño: {{miUsuario.nombre}} {{miUsuario.apellido}}
+        <br> Mail: {{miUsuario.mail}}
+      </h3>
+    </div>
+
+    <div *ngIf="miUsuario.nombre&&tipo==2">
+      <br>
+      <br>
+      <button pButton type="button" (click)="solicitarTurno()" icon="pi pi-check" label="Solicitar turno para {{mascotaSeleccionada.nombre}} " *ngIf="mascotaSeleccionada" ></button>
+    </div>
+
+  </div>
+
+  <div class="ui-g-12 ui-md-4 ui-lg-2"></div>
+</div>
+<!-- 
+<app-turno *ngIf="visible" [unExpediente]="expedienteSeleccionado"></app-turno>
+-->

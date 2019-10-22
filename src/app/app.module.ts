@@ -40,6 +40,7 @@ import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.co
 import { Agent } from 'https';
 import { AgenteComponent } from './componentes/agente/agente.component';
 import { AltaExpedienteComponent } from './componentes/alta-expediente/alta-expediente.component';
+import { ListaExpedientesComponent } from './componentes/lista-expedientes/lista-expedientes.component';
 //ROUTEO
 const config: Routes = [
   {
@@ -59,6 +60,10 @@ const config: Routes = [
       {
         path: 'alta',
         component: AltaExpedienteComponent
+      },
+      {
+        path: 'listaexpedientes',
+        component: ListaExpedientesComponent
       }
     ]
   },
@@ -113,6 +118,7 @@ const config: Routes = [
     LoginComponent,
     AgenteComponent,
     AltaExpedienteComponent,
+    ListaExpedientesComponent,
     RegistroComponent,
     AltaMascotaComponent,
     ListaMascotasComponent,
