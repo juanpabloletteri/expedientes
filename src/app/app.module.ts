@@ -5,10 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
 //CLASES
+import { Expediente } from './clases/expediente';
+
 import { Mascota } from './clases/mascota';
 import { Usuario } from './clases/usuario';
 import { Turno } from './clases/turno';
 //SERVICIOS
+import { ExpedienteService } from './servicios/expediente.service';
+
 import { MascotaService } from './servicios/mascota.service';
 import { UsuarioService } from './servicios/usuario.service';
 import { LoginService } from './servicios/login.service';
@@ -33,6 +37,9 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { TurnoComponent } from './componentes/turno/turno.component';
 import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.component';
+import { Agent } from 'https';
+import { AgenteComponent } from './componentes/agente/agente.component';
+import { AltaExpedienteComponent } from './componentes/alta-expediente/alta-expediente.component';
 //ROUTEO
 const config: Routes = [
   {
@@ -42,6 +49,18 @@ const config: Routes = [
   {
     path: 'registro',
     component: RegistroComponent
+  },
+  ////////////
+  {
+    path: "agente",
+    component: AgenteComponent,
+    //canActivate: [AutentificacionClienteService],
+    children: [
+      {
+        path: 'alta',
+        component: AltaExpedienteComponent
+      }
+    ]
   },
   ////////////
   {
@@ -92,6 +111,8 @@ const config: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    AgenteComponent,
+    AltaExpedienteComponent,
     RegistroComponent,
     AltaMascotaComponent,
     ListaMascotasComponent,
@@ -113,6 +134,8 @@ const config: Routes = [
   ],
   providers: [
     MiHttpService,
+    Expediente,
+    ExpedienteService,
     Mascota,
     MascotaService,
     Usuario,
