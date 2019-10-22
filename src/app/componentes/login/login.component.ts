@@ -55,6 +55,9 @@ export class LoginComponent implements OnInit {
           else if (datos['data']['tipo'] == 2) {
             this.rute.navigate(['cliente']);
           }
+          else if (datos['data']['tipo'] == 3) {
+            this.rute.navigate(['agente']);
+          }
         }
       })
   }
