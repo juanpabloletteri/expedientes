@@ -28,7 +28,7 @@ export class ListaExpedientesComponent implements OnInit {
 
   visible: boolean = false;
 
-  constructor(/*private miMascota: Mascota, private miServicioMascota: MascotaService*/,
+  constructor(/*private miMascota: Mascota, private miServicioMascota: MascotaService,*/
     private miExpediente: Expediente, private miServicioExpediente: ExpedienteService,
     private miUsuario: Usuario, private miServicioUsuario: UsuarioService) {
 

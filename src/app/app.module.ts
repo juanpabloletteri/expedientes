@@ -37,7 +37,7 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { TurnoComponent } from './componentes/turno/turno.component';
 import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.component';
-import { Agent } from 'https';
+//import { Agent } from 'https';
 import { AgenteComponent } from './componentes/agente/agente.component';
 import { AltaExpedienteComponent } from './componentes/alta-expediente/alta-expediente.component';
 import { ListaExpedientesComponent } from './componentes/lista-expedientes/lista-expedientes.component';

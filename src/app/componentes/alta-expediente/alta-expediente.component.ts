@@ -12,7 +12,7 @@ import { Usuario } from '../../clases/usuario';
 import { SelectItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
-import { ExecOptions } from 'child_process';
+//import { ExecOptions } from 'child_process';
 
 @Component({
   selector: 'app-alta-expediente',
