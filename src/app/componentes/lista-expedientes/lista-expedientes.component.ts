@@ -41,21 +41,21 @@ export class ListaExpedientesComponent implements OnInit {
       .then(data => {
         this.datosTabla = data;
       })
-      /*
-    /////si es tipo admin ve todas las mascotas y relleno la tabla con todas las mascotas
-    if (this.tipo == 1) {
-      this.miServicioExpediente.traerTodosLosExpedientes()
-        .then(data => {
-          this.datosTabla = data;
-        })
-    }
-    //si es tipo cliente relleno la tabla solo con las mascotas q corrsponden a su id
-    if (this.tipo == 2) {
-      this.miServicioExpediente.traerTodosLosExpedientes()
-        .then(data => {
-          this.datosTabla = data;
-        })
-    }*/
+    /*
+  /////si es tipo admin ve todas las mascotas y relleno la tabla con todas las mascotas
+  if (this.tipo == 1) {
+    this.miServicioExpediente.traerTodosLosExpedientes()
+      .then(data => {
+        this.datosTabla = data;
+      })
+  }
+  //si es tipo cliente relleno la tabla solo con las mascotas q corrsponden a su id
+  if (this.tipo == 2) {
+    this.miServicioExpediente.traerTodosLosExpedientes()
+      .then(data => {
+        this.datosTabla = data;
+      })
+  }*/
 
     /////////
     this.titulo = 'EXPEDIENTES';
@@ -64,7 +64,11 @@ export class ListaExpedientesComponent implements OnInit {
       { field: 'tipo', header: 'Tipo' },
       { field: 'numero', header: 'Numero' },
       { field: 'anio', header: 'Año' },
+      { field: 'fecha', header: 'Fecha' },
+      { field: 'tema', header: 'Tema' },
+      { field: 'fojas', header: 'Fojas' },
       { field: 'iniciador', header: 'Iniciador' },
+      { field: 'direccion', header: 'Direccion' },
       { field: 'caratula', header: 'Caratula' }
     ];
     this.tipoExpediente = [
@@ -75,7 +79,7 @@ export class ListaExpedientesComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    this.miServicioExpediente.traerExpedientePorId(this.expedienteSeleccionado.id_exp)
+    this.miServicioExpediente.traerExpedientePorId(this.expedienteSeleccionado.id_expediente)
       .then(data => {
         //console.log("data: " + data)
         this.miUsuario = data[0];
