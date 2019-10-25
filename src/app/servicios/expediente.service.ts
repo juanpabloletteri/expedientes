@@ -16,6 +16,14 @@ export class ExpedienteService {
         return data;
       })
   }
+  traerTodosLosExpedientesConUsuario(): Promise<any> {
+    return this.miHttp.httpGetP('traerTodosLosExpedientesConUsuario')
+      .then(data => {
+
+        return data;
+      })
+  }
+
   agregarExpediente(data): Promise<any> {
     return this.miHttp.httpPostP('agregarExpediente', data)
       .then(data => {

@@ -9,6 +9,7 @@ export class MiHttpService {
   constructor(public http: Http) { }
 
   ruta: string = 'http://localhost/apimun/';
+//ruta: string = 'http://expedienteshabvp.atwebpages.com/apimun/';
 
   public httpGetP(url: string) {
     let headers = new Headers({ token: localStorage.getItem('token') });

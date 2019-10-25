@@ -37,10 +37,22 @@ export class ListaExpedientesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.miServicioExpediente.traerTodosLosExpedientes()
-      .then(data => {
-        this.datosTabla = data;
-      })
+    //si es de tipo general traigo solo datos del expediente
+    if (this.tipo == 1) {
+      this.miServicioExpediente.traerTodosLosExpedientes()
+        .then(data => {
+          this.datosTabla = data;
+        })
+    }
+    //si es de tipo administrador traigo datos del expediente y quien lo cargo
+    //REVISAR CONSULTA PARA NO TRAER PASSWORDS DE TODOS EN ESTE CASO
+    else if (this.tipo == 3) {
+      this.miServicioExpediente.traerTodosLosExpedientesConUsuario()
+        .then(data => {
+          this.datosTabla = data;
+        })
+    }
+
     /*
   /////si es tipo admin ve todas las mascotas y relleno la tabla con todas las mascotas
   if (this.tipo == 1) {
@@ -59,18 +71,37 @@ export class ListaExpedientesComponent implements OnInit {
 
     /////////
     this.titulo = 'EXPEDIENTES';
-    this.cols = [
-      //{ field: 'id_mascota', header: 'N° Ficha' },
-      { field: 'tipo', header: 'Tipo' },
-      { field: 'numero', header: 'Numero' },
-      { field: 'anio', header: 'Año' },
-      { field: 'fecha', header: 'Fecha' },
-      { field: 'tema', header: 'Tema' },
-      { field: 'fojas', header: 'Fojas' },
-      { field: 'iniciador', header: 'Iniciador' },
-      { field: 'direccion', header: 'Direccion' },
-      { field: 'caratula', header: 'Caratula' }
-    ];
+    if (this.tipo == 1) {
+      this.cols = [
+        //{ field: 'id_mascota', header: 'N° Ficha' },
+        { field: 'tipo', header: 'Tipo' },
+        { field: 'numero', header: 'Numero' },
+        { field: 'anio', header: 'Año' },
+        { field: 'fecha', header: 'Fecha' },
+        { field: 'tema', header: 'Tema' },
+        { field: 'fojas', header: 'Fojas' },
+        { field: 'iniciador', header: 'Iniciador' },
+        { field: 'direccion', header: 'Direccion' },
+        { field: 'caratula', header: 'Caratula' }
+      ];
+    }
+    else if (this.tipo == 3) {
+      this.cols = [
+        //{ field: 'id_mascota', header: 'N° Ficha' },
+        { field: 'tipo', header: 'Tipo' },
+        { field: 'numero', header: 'Numero' },
+        { field: 'anio', header: 'Año' },
+        { field: 'fecha', header: 'Fecha' },
+        { field: 'tema', header: 'Tema' },
+        { field: 'fojas', header: 'Fojas' },
+        { field: 'iniciador', header: 'Iniciador' },
+        { field: 'direccion', header: 'Direccion' },
+        { field: 'caratula', header: 'Caratula' },
+        { field: 'nombre', header: 'Nombre' },
+        { field: 'apellido', header: 'Apellido' }
+      ];
+    }
+
     this.tipoExpediente = [
       { label: 'Ver Todos', value: null },
       { label: 'Infraccion', value: '0' },
