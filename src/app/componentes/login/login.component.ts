@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   titulo: string;
   visible: boolean = false;
   tituloEspera: string;
+  tipo: number;
 
   constructor(private fb: FormBuilder, private miUsuario: Usuario, private miServicioUsuario: UsuarioService, public rute: Router, private miServicioLogin: LoginService) { }
 
@@ -48,14 +49,15 @@ export class LoginComponent implements OnInit {
           //cargo datos en servicio usuario
           this.miServicioUsuario.setIdUsuario(datos['data']['id_usuario']);
           this.miServicioUsuario.setTipo(datos['data']['tipo']);
+          this.tipo = (datos['data']['tipo']);
           //verifico donde redirijo
-          if (datos['data']['tipo'] == 1) {
+          if (this.tipo == 1) {
             this.rute.navigate(['admin']);
           }
-          else if (datos['data']['tipo'] == 2) {
+          else if (this.tipo == 2) {
             this.rute.navigate(['cliente']);
           }
-          else if (datos['data']['tipo'] == 3) {
+          else if (this.tipo == -1 || this.tipo == -2 || this.tipo == -3) {
             this.rute.navigate(['agente']);
           }
         }
@@ -67,18 +69,18 @@ export class LoginComponent implements OnInit {
   }
 
   admin() {
-    this.tituloEspera="Cargando lista de administradores";
+    this.tituloEspera = "Cargando lista de administradores";
     this.tablaUsuarios = null;
     this.visible = true;
-    this.miServicioUsuario.traerUsuarioPorTipo(1)
+    this.miServicioUsuario.traerTodosLosUsuarios()
       .then(data => {
-        this.titulo = 'Administradores';
+        this.titulo = 'Usuarios';
         this.tablaUsuarios = data;
       })
   }
 
   cliente() {
-    this.tituloEspera="Cargando lista de Clientes";
+    this.tituloEspera = "Cargando lista de Clientes";
     this.tablaUsuarios = null;
     this.visible = true;
     this.miServicioUsuario.traerUsuarioPorTipo(2)

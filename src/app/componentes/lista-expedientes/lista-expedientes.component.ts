@@ -38,7 +38,7 @@ export class ListaExpedientesComponent implements OnInit {
 
   ngOnInit() {
     //si es de tipo general traigo solo datos del expediente
-    if (this.tipo == 1) {
+    if (this.tipo == -3 || this.tipo == -5) {
       this.miServicioExpediente.traerTodosLosExpedientes()
         .then(data => {
           this.datosTabla = data;
@@ -46,7 +46,7 @@ export class ListaExpedientesComponent implements OnInit {
     }
     //si es de tipo administrador traigo datos del expediente y quien lo cargo
     //REVISAR CONSULTA PARA NO TRAER PASSWORDS DE TODOS EN ESTE CASO
-    else if (this.tipo == 3) {
+    else if (this.tipo == -1 || this.tipo == -2 || this.tipo == -4) {
       this.miServicioExpediente.traerTodosLosExpedientesConUsuario()
         .then(data => {
           this.datosTabla = data;
@@ -71,7 +71,7 @@ export class ListaExpedientesComponent implements OnInit {
 
     /////////
     this.titulo = 'EXPEDIENTES';
-    if (this.tipo == 1) {
+    if (this.tipo == -3 || this.tipo == -5) {
       this.cols = [
         //{ field: 'id_mascota', header: 'N° Ficha' },
         { field: 'tipo', header: 'Tipo' },
@@ -85,7 +85,7 @@ export class ListaExpedientesComponent implements OnInit {
         { field: 'caratula', header: 'Caratula' }
       ];
     }
-    else if (this.tipo == 3) {
+    else if (this.tipo == -1 || this.tipo == -2 || this.tipo == -4) {
       this.cols = [
         //{ field: 'id_mascota', header: 'N° Ficha' },
         { field: 'tipo', header: 'Tipo' },
