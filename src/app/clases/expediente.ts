@@ -1,8 +1,13 @@
 export class Expediente {
-    id_exp: number;
+    id_expediente: number;
     tipo: number;
     numero: number;
     anio: number;
+    fecha: Date;
+    tema: string;
+    fojas: number;
     iniciador: string;
+    direccion: string;
     caratula: string;
+    id_usuario: number;
 }

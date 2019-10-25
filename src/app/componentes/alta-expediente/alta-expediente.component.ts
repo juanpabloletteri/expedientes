@@ -24,44 +24,32 @@ export class AltaExpedienteComponent implements OnInit {
   userform: FormGroup;
   types: SelectItem[];
   cols: any[];
-  datosTabla: any = null;
-  titulo: string;
-  usuarioSeleccionado: Usuario = null;
   tipo: number;
+  id_usuario: number;
 
   constructor(private fb: FormBuilder, private miExpediente: Expediente, private miServicioExpediente: ExpedienteService, private miMascota: Mascota, private miServicioMascota: MascotaService, public rute: Router, private miServiciousuario: UsuarioService) {
-
-    this.miServiciousuario.traerTodosLosUsuarios()
-      .then(data => {
-        this.datosTabla = data;
-      })
-
+    //tomo el tipo de usuario
     this.tipo = this.miServiciousuario.getTipo();
-
-    if (this.miServiciousuario.getIdUsuario() == 2) {
-      this.miMascota.id_duenio = this.miServiciousuario.getIdUsuario();
-    }
-
+    //tomo el id del usuario
+    this.id_usuario = this.miServiciousuario.getIdUsuario();
 
     this.types = [
-      { label: 'Publico', value: 1, icon: 'fa fa-fw fa-cc-paypal' },
-      { label: 'Infraccion', value: 0, icon: 'fa fa-fw fa-cc-visa' }
+      { label: 'Publico', value: 0, icon: 'fa fa-fw fa-cc-paypal' },
+      { label: 'Infraccion', value: 1, icon: 'fa fa-fw fa-cc-visa' },
+      { label: 'Vecino', value: 2, icon: 'fa fa-fw fa-cc-visa' }
     ];
 
-    /////////
-    this.titulo = 'MASCOTAS';
-    this.cols = [
-      { field: 'nombre', header: 'Nombre' },
-      { field: 'apellido', header: 'Apellido' },
-      { field: 'mail', header: 'Mail' }
-    ];
   }
 
   ngOnInit() {
     this.userform = this.fb.group({
       'numero': new FormControl('', Validators.required),
       'anio': new FormControl('', Validators.required),
+      'fecha': new FormControl('', Validators.required),
+      'tema': new FormControl('', Validators.required),
+      'fojas': new FormControl('', Validators.required),
       'iniciador': new FormControl('', Validators.required),
+      'direccion': new FormControl('', Validators.required),
       'caratula': new FormControl('', Validators.required),
       'tipo': new FormControl('', Validators.required)
     });
@@ -70,27 +58,27 @@ export class AltaExpedienteComponent implements OnInit {
   onSubmit(value: string) {
     this.miExpediente.numero = this.userform.value.numero;
     this.miExpediente.anio = this.userform.value.anio;
+    this.miExpediente.fecha = this.userform.value.fecha;
+    this.miExpediente.tema = this.userform.value.tema;
+    this.miExpediente.fojas = this.userform.value.fojas;
     this.miExpediente.iniciador = this.userform.value.iniciador;
+    this.miExpediente.direccion = this.userform.value.direccion;
     this.miExpediente.caratula = this.userform.value.caratula;
     this.miExpediente.tipo = this.userform.value.tipo;
+    this.miExpediente.id_usuario = this.id_usuario;
 
-    if (this.tipo == 1 && this.usuarioSeleccionado == null) {
-      swal('seleccione un usuario por favor');
-      return 1;
-    }
     this.miServicioExpediente.agregarExpediente(this.miExpediente)
       .then(data => {
         swal(
           'Felicidades!',
-          'Mascota agregada correctamente!',
+          'Expediente agregado correctamente!',
           'success'
         )
         this.userform.reset();
-        //this.rute.navigate(['']); //aca llevar a componente cliente
       })
   }
   onRowSelect(event) {
-    this.miMascota.id_duenio = this.usuarioSeleccionado.id_usuario;
+
   }
 
 }

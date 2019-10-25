@@ -40,6 +40,54 @@
 
           <div class="ui-grid-row">
             <div class="ui-grid-col-2">
+              Fecha *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="date" formControlName="fecha" placeholder="Ingrese fecha" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all"
+                *ngIf="!userform.controls['fecha'].valid&&userform.controls['fecha'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Tema *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="tema" placeholder="Ingrese tema" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all"
+                *ngIf="!userform.controls['tema'].valid&&userform.controls['tema'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Fojas *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="number" formControlName="fojas" placeholder="Ingrese fojas" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all"
+                *ngIf="!userform.controls['fojas'].valid&&userform.controls['fojas'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
               Iniciador *:
             </div>
             <div class="ui-grid-col-6">
@@ -48,6 +96,22 @@
             <div class="ui-grid-col-4">
               <div class="ui-message ui-messages-error ui-corner-all"
                 *ngIf="!userform.controls['iniciador'].valid&&userform.controls['iniciador'].dirty">
+                <i class="fa fa-close"></i>
+                Campo Obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Direccion *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="direccion" placeholder="Ingrese direccion" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all"
+                *ngIf="!userform.controls['direccion'].valid&&userform.controls['direccion'].dirty">
                 <i class="fa fa-close"></i>
                 Campo Obligatorio
               </div>
@@ -100,39 +164,6 @@
       </p-panel>
     </form>
 
-  </div>
-
-  <div *ngIf="tipo==1">
-    <h3 class="first">Lista de Usuarios</h3>
-    <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single"
-      [(selection)]="usuarioSeleccionado" (onRowSelect)="onRowSelect($event)">
-      <ng-template pTemplate="caption">
-        <div style="text-align: right">
-          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-          <input type="text" pInputText size="50" placeholder="Buscador"
-            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-        </div>
-      </ng-template>
-
-      <ng-template pTemplate="header" let-columns>
-        <tr>
-          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-            {{col.header}}
-            <p-sortIcon [field]="col.field"></p-sortIcon>
-          </th>
-        </tr>
-
-      </ng-template>
-
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of columns">
-            {{rowData[col.field]}}
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <div *ngIf="usuarioSeleccionado"> {{usuarioSeleccionado.nombre}} </div>
   </div>
 
   <div class="ui-g-12 ui-md-4 ui-lg-3"></div>
