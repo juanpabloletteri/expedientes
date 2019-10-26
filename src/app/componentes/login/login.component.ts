@@ -57,7 +57,12 @@ export class LoginComponent implements OnInit {
           else if (this.tipo == 2) {
             this.rute.navigate(['cliente']);
           }
-          else if (this.tipo == -1 || this.tipo == -2 || this.tipo == -3) {
+          //administardores
+          else if (this.tipo == 0  || this.tipo == 11 || this.tipo == 21) {
+            this.rute.navigate(['agente']);
+          }
+          //usuarios comunes
+          else if (this.tipo == 12  || this.tipo == 22) {
             this.rute.navigate(['agente']);
           }
         }
@@ -75,17 +80,6 @@ export class LoginComponent implements OnInit {
     this.miServicioUsuario.traerTodosLosUsuarios()
       .then(data => {
         this.titulo = 'Usuarios';
-        this.tablaUsuarios = data;
-      })
-  }
-
-  cliente() {
-    this.tituloEspera = "Cargando lista de Clientes";
-    this.tablaUsuarios = null;
-    this.visible = true;
-    this.miServicioUsuario.traerUsuarioPorTipo(2)
-      .then(data => {
-        this.titulo = 'Clientes';
         this.tablaUsuarios = data;
       })
   }

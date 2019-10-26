@@ -1,13 +1,17 @@
 TIPOS DE USUARIOS
--1 administrador de sistema
--2 administrador habilitaciones
--3 usuario habilitaciones
--4 administrador via publica
--5 usuario via publica
--20 vacante
+0  administrador de sistema
+11 administrador habilitaciones
+12 usuario habilitaciones
+21 administrador via publica
+22 usuario via publica
+
+TIPOS DE OFICINA
+0 todas
+1 habilitaciones comerciales
+2 via publica
 
 TIPOS DE EXPEDIENTES
--21 1 publico
--22 2 interno
--23 3 hcd
--24 4 tribunal de faltas
+-1 publico
+-2 interno
+-3 hcd
+-4 tribunal de faltas
