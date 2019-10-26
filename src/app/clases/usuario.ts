@@ -6,5 +6,5 @@ export class Usuario {
     nombre: string;
     apellido: string;
     tipo: number;
-
+    id_oficina: number;
 }

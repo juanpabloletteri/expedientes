@@ -26,12 +26,15 @@ export class AltaExpedienteComponent implements OnInit {
   cols: any[];
   tipo: number;
   id_usuario: number;
+  id_oficina: number;
 
   constructor(private fb: FormBuilder, private miExpediente: Expediente, private miServicioExpediente: ExpedienteService, private miMascota: Mascota, private miServicioMascota: MascotaService, public rute: Router, private miServiciousuario: UsuarioService) {
     //tomo el tipo de usuario
     this.tipo = this.miServiciousuario.getTipo();
     //tomo el id del usuario
     this.id_usuario = this.miServiciousuario.getIdUsuario();
+    //tomo la id_oficina del usuario
+    this.id_oficina = this.miServiciousuario.getIdOficina();
 
     this.types = [
       { label: 'Publico', value: 0, icon: 'fa fa-fw fa-cc-paypal' },
@@ -65,7 +68,9 @@ export class AltaExpedienteComponent implements OnInit {
     this.miExpediente.direccion = this.userform.value.direccion;
     this.miExpediente.caratula = this.userform.value.caratula;
     this.miExpediente.tipo = this.userform.value.tipo;
+    //datos que no tomo del formulario
     this.miExpediente.id_usuario = this.id_usuario;
+    this.miExpediente.id_oficina = this.id_oficina;
 
     this.miServicioExpediente.agregarExpediente(this.miExpediente)
       .then(data => {

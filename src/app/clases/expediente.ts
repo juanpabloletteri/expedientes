@@ -10,4 +10,5 @@ export class Expediente {
     direccion: string;
     caratula: string;
     id_usuario: number;
+    id_oficina: number;
 }

@@ -28,6 +28,9 @@ export class UsuarioService {
   setTipo(data) {
     this.miUsuario.tipo = data;
   }
+  setIdOficina(data) {
+    this.miUsuario.id_oficina = data;
+  }
   /////////////////////////
   getIdUsuario() {
     return this.miUsuario.id_usuario;
@@ -47,46 +50,49 @@ export class UsuarioService {
   getTipo() {
     return this.miUsuario.tipo;
   }
+  getIdOficina() {
+    return this.miUsuario.id_oficina;
+  }
   ///////////////////////////////
   traerTodosLosUsuarios(): Promise<any> {
     return this.miHttp.httpGetP('traerTodosLosUsuarios')
       .then(data => {
-       
+
         return data;
       })
   }
   agregarUsuario(data): Promise<any> {
     return this.miHttp.httpPostP('agregarUsuario', data)
       .then(data => {
-       
+
         return data;
       })
   }
   traerUsuarioPorId(data): Promise<any> {
     return this.miHttp.httpPostP('traerUsuarioPorId', { id: data })
       .then(data => {
-       
+
         return data;
       })
   }
   traerUsuarioPorTipo(data): Promise<any> {
     return this.miHttp.httpPostP('traerUsuarioPorTipo', { tipo: data })
       .then(data => {
-       
+
         return data;
       })
   }
   modificarUsuario(data): Promise<any> {
     return this.miHttp.httpPostP('modificarUsuario', data)
       .then(data => {
-       
+
         return data;
       })
   }
   borrarUsuario(data): Promise<any> {
     return this.miHttp.httpPostP('borrarUsuario', data)
       .then(data => {
-       
+
         return data;
       })
   }

@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
           //cargo datos en servicio usuario
           this.miServicioUsuario.setIdUsuario(datos['data']['id_usuario']);
           this.miServicioUsuario.setTipo(datos['data']['tipo']);
+          this.miServicioUsuario.setIdOficina(datos['data']['id_oficina']);
           this.tipo = (datos['data']['tipo']);
           //verifico donde redirijo
           if (this.tipo == 1) {
