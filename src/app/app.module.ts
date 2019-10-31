@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DropdownModule} from 'primeng/dropdown';
 //SERVICIO HTTP PERSONALIZADO
 import { MiHttpService } from './servicios/mi-http.service';
 import { HttpModule } from '@angular/http';
@@ -32,6 +33,7 @@ import { AltaMascotaComponent } from './componentes/alta-mascota/alta-mascota.co
 import { ListaMascotasComponent } from './componentes/lista-mascotas/lista-mascotas.component';
 import { ListaTurnosComponent } from './componentes/lista-turnos/lista-turnos.component';
 import { EdadPipe } from './pipes/edad.pipe';
+import { LocalidadPipe } from './pipes/localidad.pipe';
 import { TipoPipe } from './pipes/tipo.pipe';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { AdminComponent } from './componentes/admin/admin.component';
@@ -41,6 +43,7 @@ import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.co
 import { AgenteComponent } from './componentes/agente/agente.component';
 import { AltaExpedienteComponent } from './componentes/alta-expediente/alta-expediente.component';
 import { ListaExpedientesComponent } from './componentes/lista-expedientes/lista-expedientes.component';
+
 //ROUTEO
 const config: Routes = [
   {
@@ -125,6 +128,7 @@ const config: Routes = [
     ListaTurnosComponent,
     EdadPipe,
     TipoPipe,
+    LocalidadPipe,
     ClienteComponent,
     AdminComponent,
     TurnoComponent,
@@ -134,6 +138,7 @@ const config: Routes = [
     BrowserModule,
     PrimengModule,
     FormsModule,
+    DropdownModule,
     ReactiveFormsModule,
     RouterModule.forRoot(config),
     HttpModule

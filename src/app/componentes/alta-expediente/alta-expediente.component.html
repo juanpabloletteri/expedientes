@@ -72,14 +72,16 @@
 
           <div class="ui-grid-row">
             <div class="ui-grid-col-2">
-              Fojas *:
+              Localidad *:
+
+
             </div>
             <div class="ui-grid-col-6">
-              <input pInputText type="number" formControlName="fojas" placeholder="Ingrese fojas" />
+              <p-dropdown [options]="cities1" formControlName="localidad"></p-dropdown>
             </div>
             <div class="ui-grid-col-4">
               <div class="ui-message ui-messages-error ui-corner-all"
-                *ngIf="!userform.controls['fojas'].valid&&userform.controls['fojas'].dirty">
+                *ngIf="!userform.controls['localidad'].valid&&userform.controls['localidad'].dirty">
                 <i class="fa fa-close"></i>
                 Campo Obligatorio
               </div>

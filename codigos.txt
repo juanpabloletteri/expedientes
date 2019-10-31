@@ -15,3 +15,15 @@ TIPOS DE EXPEDIENTES
 -2 interno
 -3 hcd
 -4 tribunal de faltas
+
+LOCALIDADES
+-10 avellaneda centro
+-11 dock sud
+-12 gerli
+-13 piñeyro
+-14 sarandi
+-15 villa dominico
+-16 wilde
+
+
+

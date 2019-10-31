@@ -5,7 +5,7 @@ export class Expediente {
     anio: number;
     fecha: Date;
     tema: string;
-    fojas: number;
+    localidad: number;
     iniciador: string;
     direccion: string;
     caratula: string;

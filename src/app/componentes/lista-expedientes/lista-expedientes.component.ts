@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 //sacar
 import { Mascota } from '../../clases/mascota';
 import { MascotaService } from '../../servicios/mascota.service';
@@ -18,6 +19,7 @@ export class ListaExpedientesComponent implements OnInit {
   cols: any[];
   datosTabla: any = null;
   titulo: string;
+
   //mascotaSeleccionada: Mascota = null;
   expedienteSeleccionado: Expediente = null;
 
@@ -79,9 +81,9 @@ export class ListaExpedientesComponent implements OnInit {
         { field: 'anio', header: 'Año' },
         { field: 'fecha', header: 'Fecha' },
         { field: 'tema', header: 'Tema' },
-        { field: 'fojas', header: 'Fojas' },
         { field: 'iniciador', header: 'Iniciador' },
         { field: 'direccion', header: 'Direccion' },
+        { field: 'localidad', header: 'Localidad' },
         { field: 'caratula', header: 'Caratula' }
       ];
     }
@@ -93,9 +95,9 @@ export class ListaExpedientesComponent implements OnInit {
         { field: 'anio', header: 'Año' },
         { field: 'fecha', header: 'Fecha' },
         { field: 'tema', header: 'Tema' },
-        { field: 'fojas', header: 'Fojas' },
         { field: 'iniciador', header: 'Iniciador' },
         { field: 'direccion', header: 'Direccion' },
+        { field: 'localidad', header: 'Localidad' },
         { field: 'caratula', header: 'Caratula' },
         { field: 'nombre', header: 'Nombre' },
         { field: 'apellido', header: 'Apellido' }

@@ -28,6 +28,9 @@ export class AltaExpedienteComponent implements OnInit {
   id_usuario: number;
   id_oficina: number;
 
+  cities1: SelectItem[];
+  selectedCity1: null;
+
   constructor(private fb: FormBuilder, private miExpediente: Expediente, private miServicioExpediente: ExpedienteService, private miMascota: Mascota, private miServicioMascota: MascotaService, public rute: Router, private miServiciousuario: UsuarioService) {
     //tomo el tipo de usuario
     this.tipo = this.miServiciousuario.getTipo();
@@ -42,6 +45,17 @@ export class AltaExpedienteComponent implements OnInit {
       { label: 'Vecino', value: 2, icon: 'fa fa-fw fa-cc-visa' }
     ];
 
+    this.cities1 = [
+      { label: 'Localidad', value: null },
+      { label: 'Avellaneda Centro', value: -10 },
+      { label: 'Dock Sud', value: -11 },
+      { label: 'Gerli', value: -12 },
+      { label: 'Piñeyro', value: -13 },
+      { label: 'Sarandi', value: -14 },
+      { label: 'Villa Dominico', value: -15 },
+      { label: 'Wilde', value: -16 }
+    ];
+
   }
 
   ngOnInit() {
@@ -50,9 +64,9 @@ export class AltaExpedienteComponent implements OnInit {
       'anio': new FormControl('', Validators.required),
       'fecha': new FormControl('', Validators.required),
       'tema': new FormControl('', Validators.required),
-      'fojas': new FormControl('', Validators.required),
       'iniciador': new FormControl('', Validators.required),
       'direccion': new FormControl('', Validators.required),
+      'localidad': new FormControl('', Validators.required),
       'caratula': new FormControl('', Validators.required),
       'tipo': new FormControl('', Validators.required)
     });
@@ -63,9 +77,9 @@ export class AltaExpedienteComponent implements OnInit {
     this.miExpediente.anio = this.userform.value.anio;
     this.miExpediente.fecha = this.userform.value.fecha;
     this.miExpediente.tema = this.userform.value.tema;
-    this.miExpediente.fojas = this.userform.value.fojas;
     this.miExpediente.iniciador = this.userform.value.iniciador;
     this.miExpediente.direccion = this.userform.value.direccion;
+    this.miExpediente.localidad = this.userform.value.localidad;
     this.miExpediente.caratula = this.userform.value.caratula;
     this.miExpediente.tipo = this.userform.value.tipo;
     //datos que no tomo del formulario

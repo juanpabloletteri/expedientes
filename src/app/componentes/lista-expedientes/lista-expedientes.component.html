@@ -38,7 +38,7 @@
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pSelectableRow]="rowData">
           <td *ngFor="let col of columns">
-            {{rowData[col.field]|tipo}}
+            {{rowData[col.field]|tipo|localidad}}
             <!-- poner PIPE-->
           </td>
         </tr>
