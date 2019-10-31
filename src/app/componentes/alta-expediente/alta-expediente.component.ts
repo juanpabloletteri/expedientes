@@ -28,7 +28,7 @@ export class AltaExpedienteComponent implements OnInit {
   id_usuario: number;
   id_oficina: number;
 
-  cities1: SelectItem[];
+  localidades1: SelectItem[];
   selectedCity1: null;
 
   constructor(private fb: FormBuilder, private miExpediente: Expediente, private miServicioExpediente: ExpedienteService, private miMascota: Mascota, private miServicioMascota: MascotaService, public rute: Router, private miServiciousuario: UsuarioService) {
@@ -45,7 +45,7 @@ export class AltaExpedienteComponent implements OnInit {
       { label: 'Vecino', value: 2, icon: 'fa fa-fw fa-cc-visa' }
     ];
 
-    this.cities1 = [
+    this.localidades1 = [
       { label: 'Localidad', value: null },
       { label: 'Avellaneda Centro', value: -10 },
       { label: 'Dock Sud', value: -11 },

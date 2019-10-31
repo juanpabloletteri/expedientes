@@ -27,6 +27,7 @@ export class ListaExpedientesComponent implements OnInit {
   id_cliente: number;
   //tipoMascota: any;
   tipoExpediente: any;
+  localidades:any;
 
   visible: boolean = false;
 
@@ -109,6 +110,17 @@ export class ListaExpedientesComponent implements OnInit {
       { label: 'Infraccion', value: '0' },
       { label: 'Publico', value: '1' },
     ];
+    this.localidades = [
+      { label: 'Todas', value: null },
+      { label: 'Avellaneda Centro', value: -10 },
+      { label: 'Dock Sud', value: -11 },
+      { label: 'Gerli', value: -12 },
+      { label: 'Piñeyro', value: -13 },
+      { label: 'Sarandi', value: -14 },
+      { label: 'Villa Dominico', value: -15 },
+      { label: 'Wilde', value: -16 }
+    ];
+
   }
 
   onRowSelect(event) {
