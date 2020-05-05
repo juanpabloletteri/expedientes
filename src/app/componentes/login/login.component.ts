@@ -48,10 +48,12 @@ export class LoginComponent implements OnInit {
           let datos = JSON.parse(atob(pay2));
           //cargo datos en servicio usuario
           this.miServicioUsuario.setIdUsuario(datos['data']['id_usuario']);
+          this.miServicioUsuario.setNombre(datos['data']['nombre']);
           this.miServicioUsuario.setTipo(datos['data']['tipo']);
           this.miServicioUsuario.setIdOficina(datos['data']['id_oficina']);
           this.tipo = (datos['data']['tipo']);
           //verifico donde redirijo
+          //CAMBIAR SEGUN CATEGORIAS DIFERENCIANDO OFICINAS
           if (this.tipo == 1) {
             this.rute.navigate(['admin']);
           }

@@ -73,8 +73,6 @@
           <div class="ui-grid-row">
             <div class="ui-grid-col-2">
               Localidad *:
-
-
             </div>
             <div class="ui-grid-col-6">
               <p-dropdown [options]="localidades1" formControlName="localidad"></p-dropdown>
@@ -93,7 +91,7 @@
               Iniciador *:
             </div>
             <div class="ui-grid-col-6">
-              <input pInputText type="text" formControlName="iniciador" placeholder="Ingrese iniciador" />
+              <p-dropdown [options]="iniciador" formControlName="iniciador"></p-dropdown>
             </div>
             <div class="ui-grid-col-4">
               <div class="ui-message ui-messages-error ui-corner-all"

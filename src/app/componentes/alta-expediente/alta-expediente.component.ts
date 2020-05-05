@@ -31,6 +31,8 @@ export class AltaExpedienteComponent implements OnInit {
   localidades1: SelectItem[];
   selectedCity1: null;
 
+  iniciador: SelectItem[];
+
   constructor(private fb: FormBuilder, private miExpediente: Expediente, private miServicioExpediente: ExpedienteService, private miMascota: Mascota, private miServicioMascota: MascotaService, public rute: Router, private miServiciousuario: UsuarioService) {
     //tomo el tipo de usuario
     this.tipo = this.miServiciousuario.getTipo();
@@ -55,6 +57,21 @@ export class AltaExpedienteComponent implements OnInit {
       { label: 'Villa Dominico', value: -15 },
       { label: 'Wilde', value: -16 }
     ];
+
+    this.iniciador = [
+      { label: 'Iniciador', value: null },
+      { label: 'Edesur AT', value: "Edesur AT" },
+      { label: 'Edesur MyBT', value: "Edesur MyBT" },
+      { label: 'Edesur Mantenimiento', value: "Edesur Mantenimiento" },
+      { label: 'Cosugas', value: "Cosugas" },
+      { label: 'Inarteco', value: "Inarteco" },
+      { label: 'AySA', value: "AySA" },
+      { label: 'Telecom', value: "Edesur" },
+      { label: 'Telefonica', value: "Telefonica" },
+      { label: 'Telecentro', value: "Telecentro" },
+      { label: 'Metrotel', value: "Metrotel" },
+      { label: 'Otros', value: "Otros" }
+    ]
 
   }
 

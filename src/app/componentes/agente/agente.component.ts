@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Usuario } from '../../clases/usuario';
+import { UsuarioService } from '../../servicios/usuario.service';
 
 @Component({
   selector: 'app-agente',
@@ -10,8 +12,11 @@ import { Router } from '@angular/router';
 export class AgenteComponent implements OnInit {
 
   private items: MenuItem[];
+  private nombre: string;
 
-  constructor(public rute: Router) { }
+  constructor(public rute: Router, private miUsuario: Usuario, private miServicioUsuario: UsuarioService) {
+    this.nombre = this.miServicioUsuario.getNombre();
+  }
 
   ngOnInit() {
     this.items = [

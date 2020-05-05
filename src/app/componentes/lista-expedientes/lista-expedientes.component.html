@@ -9,13 +9,13 @@
   <div class="ui-g-12 ui-md-10 ui-lg-8" *ngIf="datosTabla!=null">
 
     <h3 class="first">Lista de Expedientes</h3>
-    <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single" [(selection)]="expedienteSeleccionado"
-      (onRowSelect)="onRowSelect($event)">
+    <p-table #dt [columns]="cols" [value]="datosTabla" [paginator]="true" [rows]="10" selectionMode="single"
+      [(selection)]="expedienteSeleccionado" (onRowSelect)="onRowSelect($event)">
       <ng-template pTemplate="caption">
         <div style="text-align: right">
           <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-          <input type="text" pInputText size="50" placeholder="Buscador" (input)="dt.filterGlobal($event.target.value, 'contains')"
-            style="width:auto">
+          <input type="text" pInputText size="50" placeholder="Buscador"
+            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
         </div>
       </ng-template>
 
@@ -29,8 +29,10 @@
 
         <tr>
           <th *ngFor="let col of columns" [ngSwitch]="col.field">
-            <p-dropdown *ngSwitchCase="'tipo'" [options]="tipoExpediente" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
-            <p-dropdown *ngSwitchCase="'localidad'" [options]="localidades" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+            <p-dropdown *ngSwitchCase="'tipo'" [options]="tipoExpediente" [style]="{'width':'100%'}"
+              (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+            <p-dropdown *ngSwitchCase="'localidad'" [options]="localidades" [style]="{'width':'100%'}"
+              (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
           </th>
         </tr>
 
@@ -46,16 +48,17 @@
       </ng-template>
     </p-table>
 
-    <div *ngIf="miUsuario.nombre&&tipo==1">
+  <!--  <div *ngIf="miUsuario.nombre&&miUsuario.tipo==1">
       <h3> Nombre y Apellido Dueño: {{miUsuario.nombre}} {{miUsuario.apellido}}
         <br> Mail: {{miUsuario.mail}}
       </h3>
-    </div>
-
-    <div *ngIf="miUsuario.nombre&&tipo==2">
+    </div>-->
+    <div>{{miUsuario.nombre}}-- {{miUsuario.tipo}} </div>
+    <div >
       <br>
       <br>
-      <button pButton type="button" (click)="solicitarTurno()" icon="pi pi-check" label="Solicitar turno para {{mascotaSeleccionada.nombre}} " *ngIf="mascotaSeleccionada" ></button>
+      <button pButton type="button" (click)="solicitarTurno()" icon="pi pi-check"
+        label="Agregar apertura a {{expedienteSeleccionado.numero}}/{{expedienteSeleccionado.anio}} " *ngIf="expedienteSeleccionado"></button>
     </div>
 
   </div>
